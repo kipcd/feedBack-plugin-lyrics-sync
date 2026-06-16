@@ -35,12 +35,12 @@ def _find_vocals_stem(filename: str) -> Path | None:
     if not dlc:
         return None
 
-    psarc_path = dlc / filename
-    if not sloppak_mod.is_sloppak(psarc_path):
+    song_path = dlc / filename
+    if not sloppak_mod.is_sloppak(song_path):
         return None
 
     source_dir = sloppak_mod.resolve_source_dir(filename, dlc, SLOPPAK_CACHE_DIR)
-    manifest = sloppak_mod.load_manifest(psarc_path)
+    manifest = sloppak_mod.load_manifest(song_path)
 
     for s in manifest.get("stems", []) or []:
         if not isinstance(s, dict):
@@ -228,8 +228,8 @@ def setup(app: FastAPI, context: dict):
         if not dlc:
             return JSONResponse({"error": "DLC folder not configured"}, 400)
 
-        psarc_path = dlc / filename
-        if not sloppak_mod.is_sloppak(psarc_path):
+        song_path = dlc / filename
+        if not sloppak_mod.is_sloppak(song_path):
             return JSONResponse({"error": "Not a sloppak file"}, 400)
 
         source_dir = sloppak_mod.resolve_source_dir(filename, dlc, SLOPPAK_CACHE_DIR)

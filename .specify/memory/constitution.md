@@ -9,9 +9,9 @@ its own constrained role.
 
 ### 1. Sloppak Only
 
-Forced alignment requires an isolated vocals stem. PSARC songs do not
+Forced alignment requires an isolated vocals stem. archive songs do not
 ship one, so this plugin operates exclusively on sloppak files with
-`stems[id=vocals]` declared in `manifest.yaml`. PSARC songs MUST be
+`stems[id=vocals]` declared in `manifest.yaml`. archive songs MUST be
 rejected with a clear error rather than be aligned against a full mix.
 
 ### 2. Server-Backed, Optional
